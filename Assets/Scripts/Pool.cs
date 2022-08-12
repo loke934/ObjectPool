@@ -6,7 +6,7 @@ using UnityEngine;
 public class Pool : MonoBehaviour
 {
     private static Pool instance; 
-    //Singelton bc static can not be a in scene? allows only a single instance of itself,simple access to that instance
+    
 
     private static Dictionary<Type, List<PoolBehaviour>> poolsDictionary =
         new Dictionary<Type, List<PoolBehaviour>>();
@@ -35,8 +35,7 @@ public class Pool : MonoBehaviour
         }
     }
     
-    //why static if class is a singelton?
-    //Constraining the generic parameter to reference type class.
+ 
     public static T GetPoolObject<T>(Vector3 position, Quaternion rotation) where T : PoolBehaviour
     {
         return instance.InternalGetPoolObject(typeof(T), position, rotation) as T;
